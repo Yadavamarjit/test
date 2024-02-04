@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Card from "./Component/Card";
+import Confetti from "react-confetti";
+import { useWindowSize } from "@uidotdev/usehooks";
+import Upload from "./Component/Upload";
 
 function App() {
+  const { height, width } = useWindowSize();
+  const [b1, setb1] = useState(false);
+  const [n, setn] = useState(false);
+
+  console.log({ b1 });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!n ? <Card b1={b1} setb1={setb1} setn={setn} n={n} /> : <Upload />}
+
+      {!n && <Confetti width={width} height={height} />}
     </div>
   );
 }
