@@ -19,7 +19,7 @@ export default function Upload() {
     const reader = new FileReader();
     reader.onloadend = () => {
       const base64Image = reader.result.split(",")[1];
-      fetch("https://34bc-205-254-171-226.ngrok-free.app/process-image", {
+      fetch("http://localhost:5000/process-image", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
